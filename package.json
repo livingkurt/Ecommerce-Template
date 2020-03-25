@@ -1,0 +1,33 @@
+{
+  "name": "glow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "data.js",
+  "dependencies": {
+    "concurrently": "^5.1.0",
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon -r esm server.js",
+    "server": "nodemon -r esm server.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "seed": "node seeder/seed.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/livingkurt/Ecommerce-Template.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/livingkurt/Ecommerce-Template/issues"
+  },
+  "homepage": "https://github.com/livingkurt/Ecommerce-Template#readme"
+}
