@@ -6,14 +6,21 @@ import data from './data';
 const app = express();
 
 app.get("/api/products/:id", (req, res) => {
-  const productId = req.params.id
-  res.send(data.products.filter(x => x._id === productId))
+  const productId = req.params.id;
+  const product = data.products.find((x) => x._id === productId);
   if (product) {
     res.send(product);
+  } else {
+    res.status(404).send({ msg: "Product Not Found" });
   }
-  else {
-    res.status(404).send({ msg: "Product Not Found" })
-  }
+  // const productId = req.params.id
+  // res.send(data.products.filter(x => x._id === productId))
+  // if (product) {
+  //   res.send(product);
+  // }
+  // else {
+  //   res.status(404).send({ msg: "Product Not Found" })
+  // }
 })
 
 app.get("/api/products", (req, res) => {
