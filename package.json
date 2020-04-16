@@ -18,18 +18,15 @@
     "@babel/core": "^7.9.0",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.5",
-    "@babel/preset-react": "^7.9.4",
     "nodemon": "^2.0.3"
   },
   "scripts": {
+    "start": "nodemon --watch . --exec babel-node ./server.js",
     "server": "nodemon --watch . --exec babel-node ./server.js",
     "client": "npm run start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "clean": "rm -rf build && mkdir build",
-    "build-babel": "babel -d ./build . -s",
-    "build": "npm run clean && npm run build-babel",
-    "start": "npm run build && node ./build/index.js",
-    "heroku-postbuild": "npm run build && cd ./client && npm install && npm run build"
+    "build": "rm -rf dist && babel . -d dist",
+    "heroku-postbuild": "npm run build && cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
