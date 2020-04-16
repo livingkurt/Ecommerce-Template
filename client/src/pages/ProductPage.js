@@ -3,16 +3,13 @@ import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { detailsProduct } from '../actions/productActions';
 
-
 function ProductPage(props) {
-  // const product = data.products.filter(x => x._id === props.match.params.id);
+  const [qty, setQty] = useState(1);
   const productDetails = useSelector(state => state.productDetails);
   const { product, loading, error } = productDetails;
-  const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
 
   useEffect(() => {
-
     dispatch(detailsProduct(props.match.params.id));
     return () => {
       //
@@ -21,9 +18,9 @@ function ProductPage(props) {
 
   const handleAddToCart = () => {
     props.history.push("/cart/" + props.match.params.id + "?qty=" + qty)
-
   }
-  return loading ? <div>Loading...</div> : error ? <div>{error}</div> : <div>
+
+  return <div>
     <div className="back-to-result">
       <Link to="/">Back to result</Link>
     </div>
@@ -41,13 +38,13 @@ function ProductPage(props) {
                 </li>
                 <li>
                   {product.rating} Stars ({product.numReviews} Reviews)
-                    </li>
+          </li>
                 <li>
                   Price: <b>${product.price}</b>
                 </li>
                 <li>
                   Description:
-                    <div>
+            <div>
                     {product.description}
                   </div>
                 </li>
@@ -77,7 +74,8 @@ function ProductPage(props) {
           </div>
         )
     }
+
+
   </div>
 }
-
 export default ProductPage;

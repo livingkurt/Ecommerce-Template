@@ -3,8 +3,22 @@ import { Route, Link, BrowserRouter } from "react-router-dom";
 import './App.css';
 import HomePage from './pages/HomePage'
 import ProductPage from './pages/ProductPage'
+import CartPage from './pages/CartPage'
+import SignInPage from './pages/SignInPage'
+import RegisterPage from './pages/RegisterPage'
+import { useSelector } from 'react-redux';
+import ProductsPage from './pages/ProductsPage';
+import ShippingPage from './pages/ShippingPage';
+import PaymentPage from './pages/PaymentPage';
+import PlaceOrderPage from './pages/PlaceOrderPage';
+import OrderPage from './pages/OrderPage';
+import ProfilePage from './pages/ProfilePage';
+import OrdersPage from './pages/OrdersPage';
 
 function App() {
+
+  const userSignin = useSelector(state => state.userSignin)
+  const { userInfo } = userSignin;
 
   const openMenu = () => {
     document.querySelector(".sidebar").classList.add("open");
@@ -22,31 +36,52 @@ function App() {
               &#9776;
         </button>
             <Link to="/">amazona</Link>
-            {/* <a href="index.html">amazona</a> */}
           </div>
           <div className="header-links">
-            <Link to="/">Cart</Link>
-            <Link to="/">Sign In</Link>
-            {/* <a href="cart.html">Cart</a> */}
-            {/* <a href="signin.html">Sign In</a> */}
+            <Link to="/cart">Cart</Link>
+            {
+              userInfo ? <Link to="/profile">{userInfo.name}</Link> :
+                <Link to="/signin">Sign In</Link>
+            }
+            {userInfo && userInfo.isAdmin && (
+              <div className="dropdown">
+                <a href="#"  >Admin</a>
+                <ul className="dropdown-content">
+                  <li>
+                    <Link to="/orders">Orders</Link>
+                    <Link to="/products">Products</Link>
+                  </li>
+                </ul>
+              </div>
+            )}
           </div>
         </header>
         <aside className="sidebar">
           <h3>Shopping Categories</h3>
           <button className="sidebar-close-button" onClick={closeMenu}>x</button>
-          <ul>
+          <ul className="categories">
             <li>
-              <a href="index.html">Pants</a>
+              <Link to="/category/Pants">Pants</Link>
             </li>
-
             <li>
-              <a href="index.html">Shirts</a>
+              <Link to="/category/Shirts">Shirts</Link>
             </li>
           </ul>
         </aside>
         <main className="main">
           <div className="content">
+            <Route path="/orders" component={OrdersPage} />
+            <Route path="/profile" component={ProfilePage} />
+            <Route path="/order/:id" component={OrderPage} />
+            <Route path="/products" component={ProductsPage} />
+            <Route path="/shipping" component={ShippingPage} />
+            <Route path="/payment" component={PaymentPage} />
+            <Route path="/placeorder" component={PlaceOrderPage} />
+            <Route path="/signin" component={SignInPage} />
+            <Route path="/register" component={RegisterPage} />
             <Route path="/product/:id" component={ProductPage} />
+            <Route path="/cart/:id?" component={CartPage} />
+            <Route path="/category/:id?" component={HomePage} />
             <Route path="/" exact={true} component={HomePage} />
 
           </div>
