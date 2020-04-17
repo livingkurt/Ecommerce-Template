@@ -78,49 +78,49 @@ function ProductsPage(props) {
               <label htmlFor="name">
                 Name
           </label>
-              <input type="text" name="name" value={name} id="name" onChange={(e) => setName(e.target.value)}>
+              <input type="text" name="name" defaultValue={name} id="name" onChange={(e) => setName(e.target.value)}>
               </input>
             </li>
             <li>
               <label htmlFor="price">
                 Price
           </label>
-              <input type="text" name="price" value={price} id="price" onChange={(e) => setPrice(e.target.value)}>
+              <input type="text" name="price" defaultValue={price} id="price" onChange={(e) => setPrice(e.target.value)}>
               </input>
             </li>
             <li>
               <label htmlFor="image">
                 Image
           </label>
-              <input type="text" name="image" value={image} id="image" onChange={(e) => setImage(e.target.value)}>
+              <input type="text" name="image" defaultValue={image} id="image" onChange={(e) => setImage(e.target.value)}>
               </input>
             </li>
             <li>
               <label htmlFor="brand">
                 Brand
           </label>
-              <input type="text" name="brand" value={brand} id="brand" onChange={(e) => setBrand(e.target.value)}>
+              <input type="text" name="brand" defaultValue={brand} id="brand" onChange={(e) => setBrand(e.target.value)}>
               </input>
             </li>
             <li>
               <label htmlFor="countInStock">
                 CountInStock
           </label>
-              <input type="text" name="countInStock" value={countInStock} id="countInStock" onChange={(e) => setCountInStock(e.target.value)}>
+              <input type="text" name="countInStock" defaultValue={countInStock} id="countInStock" onChange={(e) => setCountInStock(e.target.value)}>
               </input>
             </li>
             <li>
               <label htmlFor="name">
                 Category
           </label>
-              <input type="text" name="category" value={category} id="category" onChange={(e) => setCategory(e.target.value)}>
+              <input type="text" name="category" defaultValue={category} id="category" onChange={(e) => setCategory(e.target.value)}>
               </input>
             </li>
             <li>
               <label htmlFor="description">
                 Description
           </label>
-              <textarea name="description" value={description} id="description" onChange={(e) => setDescription(e.target.value)}></textarea>
+              <textarea name="description" defaultValue={description} id="description" onChange={(e) => setDescription(e.target.value)}></textarea>
             </li>
             <li>
               <button type="submit" className="button primary">{id ? "Update" : "Create"}</button>

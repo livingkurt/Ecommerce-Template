@@ -1,26 +1,24 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { addToCart, removeFromCart } from '../actions/cartActions';
-import { Route, Link, BrowserRouter } from "react-router-dom";
-
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 function CartPage(props) {
+
   const cart = useSelector(state => state.cart);
+
   const { cartItems } = cart;
-  // console.log({ "cartItems": cartItems })
 
   const productId = props.match.params.id;
   const qty = props.location.search ? Number(props.location.search.split("=")[1]) : 1;
   const dispatch = useDispatch();
-
   const removeFromCartHandler = (productId) => {
     dispatch(removeFromCart(productId));
   }
-
   useEffect(() => {
     if (productId) {
       dispatch(addToCart(productId, qty));
     }
-  }, [])
+  }, []);
 
   const checkoutHandler = () => {
     props.history.push("/signin?redirect=shipping");
@@ -32,16 +30,16 @@ function CartPage(props) {
         <li>
           <h3>
             Shopping Cart
-        </h3>
+          </h3>
           <div>
             Price
-        </div>
+          </div>
         </li>
         {
           cartItems.length === 0 ?
             <div>
               Cart is empty
-        </div>
+          </div>
             :
             cartItems.map(item =>
               <li>
@@ -57,14 +55,14 @@ function CartPage(props) {
                   </div>
                   <div>
                     Qty:
-                <select value={item.qty} onChange={(e) => dispatch(addToCart(item.product, e.target.value))}>
+                  <select defaultValue={item.qty} onChange={(e) => dispatch(addToCart(item.product, e.target.value))}>
                       {[...Array(item.countInStock).keys()].map(x =>
-                        <option key={x + 1} value={x + 1}>{x + 1}</option>
+                        <option key={x + 1} defaultValue={x + 1}>{x + 1}</option>
                       )}
                     </select>
                     <button type="button" className="button" onClick={() => removeFromCartHandler(item.product)} >
                       Delete
-                  </button>
+                    </button>
                   </div>
                 </div>
                 <div className="cart-price">
@@ -87,7 +85,8 @@ function CartPage(props) {
       </button>
 
     </div>
-  </div>
 
+  </div>
 }
+
 export default CartPage;

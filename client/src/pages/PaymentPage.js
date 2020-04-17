@@ -26,7 +26,7 @@ function PaymentPage(props) {
 
           <li>
             <div>
-              <input type="radio" name="paymentMethod" id="paymentMethod" value="paypal"
+              <input type="radio" name="paymentMethod" id="paymentMethod" defaultValue="paypal"
                 onChange={(e) => setPaymentMethod(e.target.value)}>
               </input>
               <label htmlFor="paymentMethod">

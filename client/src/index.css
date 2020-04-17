@@ -445,7 +445,7 @@ tbody>tr:nth-child(odd) {
   flex: 3 1 60rem;
 }
 
-/* Admin */
+/* admin */
 
 .dropdown {
   display: inline-block;
@@ -468,7 +468,7 @@ tbody>tr:nth-child(odd) {
   display: block;
 }
 
-/* Filter */
+/* filter */
 
 .filter {
   display: flex;
@@ -477,6 +477,7 @@ tbody>tr:nth-child(odd) {
   margin: 1rem auto;
   max-width: 45rem;
   justify-content: space-between;
+  align-items: center;
 }
 
 .filter input, .filter button, .filter select {

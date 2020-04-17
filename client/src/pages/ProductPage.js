@@ -59,9 +59,9 @@ function ProductPage(props) {
                   Status: {product.countInStock > 0 ? "In Stock" : "Unavailable."}
                 </li>
                 <li>
-                  Qty: <select value={qty} onChange={(e) => { setQty(e.target.value) }}>
+                  Qty: <select defaultValue={qty} onChange={(e) => { setQty(e.target.value) }}>
                     {[...Array(product.countInStock).keys()].map(x =>
-                      <option key={x + 1} value={x + 1}>{x + 1}</option>
+                      <option key={x + 1} defaultValue={x + 1}>{x + 1}</option>
                     )}
                   </select>
                 </li>

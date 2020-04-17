@@ -9,7 +9,8 @@ const listProducts = (category = '', searchKeyword = '', sortOrder = '') => asyn
   try {
 
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get("/api/products?category=" + category + "&searchKeyword=" + searchKeyword + "&sortOrder=" + sortOrder);
+    const { data } = await axios.get("/api/products?category=" + category +
+      "&searchKeyword=" + searchKeyword + "&sortOrder=" + sortOrder);
     dispatch({ type: PRODUCT_LIST_SUCCESS, payload: data });
   }
   catch (error) {
@@ -25,14 +26,14 @@ const saveProduct = (product) => async (dispatch, getState) => {
     if (!product._id) {
       const { data } = await Axios.post('/api/products', product, {
         headers: {
-          Authorization: 'Bearer ' + userInfo.token
+          'Authorization': 'Bearer ' + userInfo.token
         }
       });
       dispatch({ type: PRODUCT_SAVE_SUCCESS, payload: data });
     } else {
       const { data } = await Axios.put('/api/products/' + product._id, product, {
         headers: {
-          Authorization: 'Bearer ' + userInfo.token
+          'Authorization': 'Bearer ' + userInfo.token
         }
       });
       dispatch({ type: PRODUCT_SAVE_SUCCESS, payload: data });

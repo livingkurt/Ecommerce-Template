@@ -17,7 +17,7 @@ import OrdersPage from './pages/OrdersPage';
 
 function App() {
 
-  const userSignin = useSelector(state => state.userSignin)
+  const userSignin = useSelector(state => state.userSignin);
   const { userInfo } = userSignin;
 
   const openMenu = () => {
@@ -27,7 +27,6 @@ function App() {
     document.querySelector(".sidebar").classList.remove("open")
   }
   return (
-
     <BrowserRouter>
       <div className="grid-container">
         <header className="header">
@@ -35,7 +34,7 @@ function App() {
             <button onClick={openMenu}>
               &#9776;
         </button>
-            <Link to="/">amazona</Link>
+            <Link to="/" >amazona</Link>
           </div>
           <div className="header-links">
             <Link to="/cart">Cart</Link>
@@ -63,9 +62,11 @@ function App() {
             <li>
               <Link to="/category/Pants">Pants</Link>
             </li>
+
             <li>
               <Link to="/category/Shirts">Shirts</Link>
             </li>
+
           </ul>
         </aside>
         <main className="main">
@@ -84,16 +85,16 @@ function App() {
             <Route path="/category/:id?" component={HomePage} />
             <Route path="/" exact={true} component={HomePage} />
 
+
           </div>
 
         </main>
         <footer className="footer">
           All right reserved.
-    </footer>
+        </footer>
       </div>
-    </BrowserRouter >
-
+    </BrowserRouter>
   );
 }
 
-export default App;
+export default App; 

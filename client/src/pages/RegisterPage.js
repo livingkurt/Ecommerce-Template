@@ -12,8 +12,8 @@ function RegisterPage(props) {
   const userRegister = useSelector(state => state.userRegister);
   const { loading, userInfo, error } = userRegister;
   const dispatch = useDispatch();
-  const redirect = props.location.search ? props.location.search.split("=")[1] : '/'
 
+  const redirect = props.location.search ? props.location.search.split("=")[1] : '/';
   useEffect(() => {
     if (userInfo) {
       props.history.push(redirect);
@@ -41,14 +41,14 @@ function RegisterPage(props) {
         <li>
           <label htmlFor="name">
             Name
-           </label>
+          </label>
           <input type="name" name="name" id="name" onChange={(e) => setName(e.target.value)}>
           </input>
         </li>
         <li>
           <label htmlFor="email">
             Email
-           </label>
+          </label>
           <input type="email" name="email" id="email" onChange={(e) => setEmail(e.target.value)}>
           </input>
         </li>
@@ -58,18 +58,21 @@ function RegisterPage(props) {
           </input>
         </li>
         <li>
-          <label htmlFor="re_password">Re-Enter Password</label>
-          <input type="password" id="re_password" name="re_password" onChange={(e) => setRePassword(e.target.value)}>
+          <label htmlFor="rePassword">Re-Enter Password</label>
+          <input type="password" id="rePassword" name="rePassword" onChange={(e) => setRePassword(e.target.value)}>
           </input>
         </li>
         <li>
           <button type="submit" className="button primary">Register</button>
         </li>
         <li>
-          Already have an account? <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Sign-In</Link>
+          Already have an account?
+          <Link to={redirect === "/" ? "signin" : "signin?redirect=" + redirect} className="button secondary text-center" >Create your amazona account</Link>
+
         </li>
+
       </ul>
     </form>
   </div>
 }
-export default RegisterPage; 
+export default RegisterPage;
